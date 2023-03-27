@@ -1,9 +1,9 @@
-import { conn, conn2 } from "../database.js";
+import { conn  } from "../database.js";
 import jwt from "jsonwebtoken";
 import moment from 'moment'
 
 export const getGifts = async (req,res)=> {
-  const db2 = await conn2();
+  const db2 = await conn();
   
   const [row] = await db2.query("Select * from gifts order by id desc limit 30")
   console.log(row);
@@ -11,24 +11,24 @@ export const getGifts = async (req,res)=> {
   
 }
 export const getGift = async (req,res)=>{
-  const db2 =await conn2();
+  const db2 =await conn();
 
 }
 export const deleteGift = async (req,res)=>{
-  const db2 =await conn2();
+  const db2 =await conn();
   await db2.query('delete from gifts where id=?',[req.params.id]);
   res.sendStatus(204);
 }
 export const getGiftCount  = async (req,res)=>{
-  const db2 =await conn2();
+  const db2 =await conn();
 
 }
 export const updateGift = async (req,res)=>{
-  const db2 =await conn2();
+  const db2 =await conn();
 
 }
 export const saveGift = async (req,res)=>{
-  const db2 =await conn2();
+  const db2 =await conn();
   console.log(req.body)
 
   const [results]=await db2.query("INSERT INTO gifts (codeWorker,descriptionGift,nameWorker) values (?,?,?)",[req.body.codeWorker,req.body.descriptionGift,req.body.nameWorker]);
