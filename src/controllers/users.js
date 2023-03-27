@@ -3,11 +3,16 @@ import jwt from "jsonwebtoken";
 
 export const getUsers = async (req, res) => {
   const db = await conn();
-  const [row] = await db.query(
-    "select Nombre,Apellidos, Trabajador, RFC  from ca_usuarios limit 10"
-  );
-  // console.log(row[0]);
-  res.json(row);
+  try {
+    const [row] = await db.query(
+      "select Nombre,Apellidos, Trabajador, RFC  from ca_usuarios limit 10"
+    );
+    // console.log(row[0]);
+    res.json(row);
+  } catch (error) {
+    return res.status(500).json({ message: "Something goes wrong" });
+  }
+  
 };
 
 export const getUser = async (req, res) => {
