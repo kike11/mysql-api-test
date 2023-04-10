@@ -29,7 +29,8 @@ export const getGiftCount  = async (req,res)=>{
 }
 export const updateGift = async (req,res)=>{
   const db2 =await conn();
-  await db2.query("UPDATE gifts SET ? where id?",[req.body,req.params.id]);
+  console.log(req.body);
+  await db2.query("UPDATE gifts SET ? where id =?",[req.body,req.params.id]);
   res.sendStatus(204);
 
 }
