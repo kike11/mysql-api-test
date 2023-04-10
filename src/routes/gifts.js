@@ -35,7 +35,7 @@ router.get('/gifts/count',getGiftCount)
  *    summary: Get  Gift by id
  *    tags: [Gifts]
  */
-router.get('/gift/:id',getGift)
+router.get('/gifts/:id',getGift)
 /**
  * @swagger
  * /gifts:
