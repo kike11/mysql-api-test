@@ -6,7 +6,7 @@ export const getGifts = async (req,res)=> {
   const db2 = await conn();
   
   const [row] = await db2.query("Select * from gifts order by id desc limit 30")
-  console.log(row);
+  
    res.json(row);
   
 }
@@ -29,7 +29,6 @@ export const getGiftCount  = async (req,res)=>{
 }
 export const updateGift = async (req,res)=>{
   const db2 =await conn();
-  console.log(req.body);
   await db2.query("UPDATE gifts SET ? where id =?",[req.body,req.params.id]);
   res.sendStatus(204);
 
